@@ -3,7 +3,7 @@ import { Link } from 'react-scroll';
 
 const Footer = () => {
     return (
-        <footer className="w-full bg-surface relative pt-16 pb-8 overflow-hidden border-t border-white/5">
+        <footer className="w-full bg-surface relative pt-16 pb-32 overflow-hidden border-t border-white/5">
             {/* Background Gradients */}
             <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl translate-y-1/2"></div>

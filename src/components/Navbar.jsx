@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { HiArrowUpRight } from 'react-icons/hi2';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -32,13 +33,13 @@ const Navbar = () => {
                     transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
                     className={`
             flex items-center justify-between px-6 py-3 rounded-full transition-all duration-300
-            ${scrolled || mobileMenuOpen ? 'bg-surface/80 backdrop-blur-xl border border-white/10 shadow-lg w-full max-w-4xl' : 'bg-transparent w-full max-w-6xl'}
+            ${scrolled || mobileMenuOpen ? 'bg-[#121212] border border-[#2a2a2a] shadow-2xl w-full max-w-4xl' : 'bg-transparent w-full max-w-6xl'}
           `}
                 >
                     {/* Logo */}
                     <Link to="hero" smooth={true} duration={500} className="font-bold text-xl cursor-pointer">
                         <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                            VU.
+                            {scrolled ? "VU" : "varunudata"}
                         </span>
                     </Link>
 
@@ -61,8 +62,12 @@ const Navbar = () => {
                     {/* CTA & Mobile Toggle */}
                     <div className="flex items-center gap-4">
                         <Link to="contact" smooth={true} duration={500}>
-                            <button className="hidden md:block bg-white/5 hover:bg-white/10 border border-white/10 text-white px-5 py-2 rounded-full text-sm font-medium transition-all">
-                                Let's Talk
+                            <button className="group relative hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface/50 border border-white/10 hover:border-primary/50 transition-all duration-300 overflow-hidden">
+                                <span className="relative z-10 text-sm font-medium text-white group-hover:text-primary transition-colors">Let's Talk</span>
+                                <HiArrowUpRight className="relative z-10 text-lg text-white group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+
+                                {/* Hover Gradient Background */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             </button>
                         </Link>
 
