@@ -42,7 +42,7 @@ const Experience = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl sm:text-5xl font-bold inline-block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4"
+                        className="text-4xl sm:text-5xl font-bold inline-block bg-gradient-to-r from-primary to-emerald-100 bg-clip-text text-transparent mb-4"
                     >
                         Experience
                     </motion.h2>
@@ -53,7 +53,7 @@ const Experience = () => {
                     <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-white/10 h-full"></div>
                     <motion.div
                         style={{ scaleY, originY: 0 }}
-                        className="absolute left-0 top-0 w-[2px] bg-gradient-to-b from-primary to-secondary h-full"
+                        className="absolute left-0 top-0 w-[2px] bg-gradient-to-b from-primary to-emerald-400 h-full"
                     />
 
                     {experiences.map((exp, index) => (

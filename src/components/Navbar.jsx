@@ -38,8 +38,8 @@ const Navbar = () => {
                 >
                     {/* Logo */}
                     <Link to="hero" smooth={true} duration={500} className="font-bold text-xl cursor-pointer">
-                        <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                            {scrolled ? "VU" : "varunudata"}
+                        <span className="text-primary text-2xl">
+                            {scrolled ? "VU" : "Varun"}
                         </span>
                     </Link>
 
@@ -67,7 +67,7 @@ const Navbar = () => {
                                 <HiArrowUpRight className="relative z-10 text-lg text-white group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
 
                                 {/* Hover Gradient Background */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-emerald-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             </button>
                         </Link>
 

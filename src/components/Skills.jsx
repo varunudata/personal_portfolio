@@ -15,7 +15,7 @@ const Skills = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl sm:text-5xl font-bold inline-block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4"
+                        className="text-4xl sm:text-5xl font-bold inline-block bg-gradient-to-r from-primary to-emerald-100 bg-clip-text text-transparent mb-4"
                     >
                         Tech Stack
                     </motion.h2>

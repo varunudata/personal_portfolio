@@ -9,7 +9,7 @@ const Hero = () => {
 
             {/* Background Blobs */}
             <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/20 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob"></div>
-            <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-secondary/20 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+            <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-emerald-500/20 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
 
             <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -32,7 +32,7 @@ const Hero = () => {
                     transition={{ delay: 0.3 }}
                     className="text-5xl sm:text-7xl md:text-8xl font-black text-textPrimary mb-6 tracking-tight leading-tight"
                 >
-                    Building <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Digital</span> <br className="hidden sm:block" /> Experiences.
+                    Building <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-100">Digital</span> <br className="hidden sm:block" /> Experiences.
                 </motion.h1>
 
                 <motion.p
@@ -55,7 +55,7 @@ const Hero = () => {
                             <span className="relative z-10 flex items-center gap-2">
                                 View My Work <HiArrowNarrowRight className="group-hover:translate-x-1 transition-transform" />
                             </span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </button>
                     </Link>
                     <a href="https://github.com/varunudata" target="_blank" rel="noopener noreferrer">

@@ -1,125 +1,139 @@
 import { motion } from 'framer-motion';
-import { FiMail, FiMapPin, FiGithub, FiLinkedin, FiTwitter, FiSend } from 'react-icons/fi';
+import { FiArrowUpRight, FiMail, FiMapPin, FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
 
 const Contact = () => {
     return (
         <div name="contact" className="w-full min-h-screen bg-background flex justify-center items-center p-4 py-24 relative overflow-hidden">
 
-            {/* Abstract Background Elements */}
-            <div className="absolute top-1/4 -right-10 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute bottom-1/4 -left-10 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] pointer-events-none" />
+            {/* Subtle Grid Background */}
 
-            <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 z-10"
-            >
 
-                {/* Left Side: Contact Info */}
-                <div className="flex flex-col justify-center space-y-8">
-                    <div>
-                        <motion.h2
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.2 }}
-                            className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent mb-6"
-                        >
-                            Let's create something <span className="text-primary italic">extraordinary</span> together.
-                        </motion.h2>
-                        <p className="text-textSecondary text-lg max-w-md leading-relaxed">
-                            Have an idea? A project? or just want to say hi? I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
-                        </p>
-                    </div>
+            <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 relative z-10">
 
-                    <div className="space-y-6">
-                        <ContactItem icon={<FiMail />} title="Email" content="hello@varunudata.com" />
-                        <ContactItem icon={<FiMapPin />} title="Location" content="Remote / Worldwide" />
-                    </div>
-
-                    <div className="flex gap-4 pt-4">
-                        <SocialBtn icon={<FiGithub />} href="https://github.com" />
-                        <SocialBtn icon={<FiLinkedin />} href="https://linkedin.com" />
-                        <SocialBtn icon={<FiTwitter />} href="https://twitter.com" />
-                    </div>
-                </div>
-
-                {/* Right Side: The Form */}
+                {/* Left Side: Structured Info */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.4 }}
-                    className="bg-[#121212] border border-[#2a2a2a] p-8 md:p-10 rounded-3xl shadow-2xl relative"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="flex flex-col justify-between"
                 >
-                    {/* Decorative Corner Gradient */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/10 to-transparent rounded-tr-3xl pointer-events-none" />
-
-                    <form action="" className="flex flex-col gap-6 relative z-10">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <InputGroup label="Name" type="text" placeholder="Your Name" />
-                            <InputGroup label="Email" type="email" placeholder="Your Email" />
+                    <div className="space-y-8">
+                        <div>
+                            <div className="flex items-center gap-2 mb-4">
+                                <div className="h-px w-8 bg-primary"></div>
+                                <span className="text-primary font-bold tracking-widest text-xs uppercase">Get in touch</span>
+                            </div>
+                            <h2 className="text-5xl md:text-6xl font-bold text-white leading-tight">
+                                Let's build something <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-white">iconic.</span>
+                            </h2>
                         </div>
 
-                        <InputGroup label="Subject" type="text" placeholder="Project Inquiry" />
+                        <p className="text-textSecondary text-lg max-w-md leading-relaxed">
+                            Ready to take your digital presence to the next level? I'm currently available for freelance projects and open to new opportunities.
+                        </p>
+                    </div>
+                    <br />
 
-                        <div className="flex flex-col gap-2">
-                            <label className="text-sm font-medium text-textSecondary ml-1">Message</label>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12 lg:mt-0">
+                        <InfoCard
+                            icon={<FiMail className="text-xl" />}
+                            label="Email"
+                            value="hello@varunudata.com"
+                            href="mailto:hello@varunudata.com"
+                        />
+                        <InfoCard
+                            icon={<FiMapPin className="text-xl" />}
+                            label="Location"
+                            value="Remote / Worldwide"
+                        />
+                    </div>
+
+                    <div className="flex gap-4 mt-8 lg:mt-12">
+                        <SocialButton href="https://github.com" icon={<FiGithub />} label="GitHub" />
+                        <SocialButton href="https://linkedin.com" icon={<FiLinkedin />} label="LinkedIn" />
+                        <SocialButton href="https://twitter.com" icon={<FiTwitter />} label="Twitter" />
+                    </div>
+                </motion.div>
+
+                {/* Right Side: Structured Form */}
+                <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                    <form className="bg-[#121212] border border-white/5 p-8 md:p-10 rounded-2xl shadow-2xl space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <FormInput label="Name" placeholder="John Doe" />
+                            <FormInput label="Email" placeholder="john@example.com" type="email" />
+                        </div>
+
+                        <FormInput label="Subject" placeholder="Project Inquiry" />
+
+                        <div className="space-y-2">
+                            <label className="text-sm font-semibold text-textSecondary uppercase tracking-wider">Message</label>
                             <textarea
                                 rows="5"
-                                placeholder="Tell me about your project..."
-                                className="bg-background/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-primary/50 focus:bg-white/5 transition-all resize-none placeholder:text-white/20"
+                                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:bg-white/10 transition-all resize-none placeholder:text-white/20"
+                                placeholder="Tell me more about your project..."
                             />
                         </div>
 
-                        <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="group relative flex items-center justify-center gap-3 bg-gradient-to-r from-primary to-secondary p-4 rounded-xl text-white font-bold text-lg mt-2 overflow-hidden"
-                        >
-                            <span className="relative z-10">Send Message</span>
-                            <FiSend className="relative z-10 group-hover:translate-x-1 transition-transform" />
-
-                            {/* Shine Effect */}
-                            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                        </motion.button>
+                        <button className="w-full group bg-white text-black font-bold py-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary hover:text-white transition-all duration-300">
+                            Send Message
+                            <FiArrowUpRight className="text-xl group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                        </button>
                     </form>
                 </motion.div>
 
-            </motion.div>
+            </div>
         </div>
     );
 };
 
-// Reusable Components
-const InputGroup = ({ label, type, placeholder }) => (
-    <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium text-textSecondary ml-1">{label}</label>
+// Components
+
+const FormInput = ({ label, type = "text", placeholder }) => (
+    <div className="space-y-2">
+        <label className="text-sm font-semibold text-textSecondary uppercase tracking-wider">{label}</label>
         <input
             type={type}
             placeholder={placeholder}
-            className="bg-background/50 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-primary/50 focus:bg-white/5 transition-all w-full placeholder:text-white/20"
+            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:bg-white/10 transition-all placeholder:text-white/20"
         />
     </div>
 );
 
-const ContactItem = ({ icon, title, content }) => (
-    <div className="flex items-center gap-4 group cursor-pointer">
-        <div className="p-3 bg-surface border border-white/5 rounded-full text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+const InfoCard = ({ icon, label, value, href }) => (
+    <div className={`p-6 bg-white/5 border border-white/5 rounded-xl flex flex-col gap-4 ${href ? 'cursor-pointer hover:border-primary/50 transition-colors group' : ''}`}>
+        <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-primary">
             {icon}
         </div>
         <div>
-            <p className="text-sm text-textSecondary">{title}</p>
-            <p className="text-white font-medium">{content}</p>
+            <p className="text-textSecondary text-xs uppercase tracking-wider mb-1">{label}</p>
+            {href ? (
+                <a href={href} className="text-white font-medium group-hover:text-primary transition-colors flex items-center gap-2">
+                    {value}
+                </a>
+            ) : (
+                <p className="text-white font-medium">{value}</p>
+            )}
         </div>
     </div>
 );
 
-const SocialBtn = ({ icon, href }) => (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="p-3 bg-surface border border-white/5 rounded-full text-textSecondary hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-all duration-300">
-        <span className="text-xl">{icon}</span>
+const SocialButton = ({ href, icon, label }) => (
+    <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/5 rounded-lg text-textSecondary hover:text-white hover:bg-white/10 hover:border-primary/30 transition-all duration-300"
+    >
+        {icon}
+        <span className="font-medium text-sm">{label}</span>
     </a>
-)
+);
 
 export default Contact;
-
