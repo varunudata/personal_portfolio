@@ -22,10 +22,10 @@ const Footer = () => {
                             <a href="https://github.com/varunudata" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300">
                                 <FaGithub />
                             </a>
-                            <a href="https://linkedin.com/in/varun-udata" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300">
+                            <a href="https://www.linkedin.com/in/varunudata/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300">
                                 <FaLinkedin />
                             </a>
-                            <a href="#" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300">
+                            <a href="https://x.com/udatavarun" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300">
                                 <FaTwitter />
                             </a>
                         </div>
@@ -46,7 +46,7 @@ const Footer = () => {
                     <div>
                         <h3 className="text-white font-bold mb-6">Get in Touch</h3>
                         <ul className="space-y-3 text-sm text-textSecondary">
-                            <li className="hover:text-white transition-colors cursor-pointer">email@example.com</li>
+                            <li className="hover:text-white transition-colors cursor-pointer">varunudata@gmail.com</li>
                             <li className="hover:text-white transition-colors cursor-pointer">Location: India</li>
                             <li>
                                 <Link to="contact" smooth={true} duration={500} className="text-primary hover:text-white cursor-pointer font-medium">

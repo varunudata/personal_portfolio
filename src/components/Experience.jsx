@@ -12,24 +12,24 @@ const Experience = () => {
 
     const experiences = [
         {
-            role: "Full Stack Developer Intern",
-            company: "Tech Startup",
-            duration: "January 2025 - Present",
-            description: "Working on building scalable web applications and optimizing user experiences. Collaborating with cross-functional teams to deliver high-quality features.",
+            role: "Web Development Freelancer",
+            company: "Self-Employed",
+            duration: "2025 - Present",
+            description: "Delivered custom website solutions for various small business clients. Managed full project lifecycles from requirement gathering to deployment.",
             current: true,
         },
         {
-            role: "Web Development Freelancer",
-            company: "Self-Employed",
-            duration: "2023 - 2024",
-            description: "Delivered custom website solutions for various small business clients. Managed full project lifecycles from requirement gathering to deployment.",
+            role: "Frontend Developer Intern",
+            company: "The Stratup",
+            duration: "May 2025 - July 2025",
+            description: "Gained hands-on experience as a Frontend Developer Intern at The Stratup, built responsive user interfaces and real-world web features.",
             current: false,
         },
         {
-            role: "Computer Science Student",
-            company: "University",
-            duration: "2022 - 2026",
-            description: "Focusing on Algorithms, Data Structures, and Web Technologies. Lead Developer for the university coding club.",
+            role: "CS & AI Student",
+            company: "Newton School of Technology | Rishihood University",
+            duration: "2024 - 2028",
+            description: "Focusing on Algorithms, Generative AI, and Web Technologies. A member in university Dev club.",
             current: false,
         }
     ];

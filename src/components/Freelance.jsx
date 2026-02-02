@@ -1,52 +1,109 @@
-import { motion } from 'framer-motion';
-import { FaExternalLinkAlt } from 'react-icons/fa';
-import { FiExternalLink, FiMonitor, FiLayers, FiDatabase } from 'react-icons/fi';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { FiMonitor, FiLayers, FiDatabase, FiExternalLink } from 'react-icons/fi';
 import { Link } from 'react-scroll';
 
-const Freelance = () => {
-    const services = [
-        {
-            title: "Web Development",
-            description: "Custom websites built from scratch using React, Next.js, and Tailwind CSS. Fast, SEO-optimized, and fully responsive.",
-            icon: <FiMonitor />
-        },
-        {
-            title: "UI/UX Design",
-            description: "Modern, user-centric designs that look great and feel intuitive. High-fidelity mockups and interactive prototypes.",
-            icon: <FiLayers />
-        },
-        {
-            title: "Full Stack Solutions",
-            description: "End-to-end application development with secure backends, databases, and dynamic frontends.",
-            icon: <FiDatabase />
-        }
-    ];
+const services = [
+    {
+        title: "Web Development",
+        description: "Custom websites built from scratch using React, Next.js, and Tailwind CSS. Fast, SEO-optimized, and fully responsive.",
+        icon: <FiMonitor />
+    },
+    {
+        title: "UI/UX Design",
+        description: "Modern, user-centric designs that look great and feel intuitive. High-fidelity mockups and interactive prototypes.",
+        icon: <FiLayers />
+    },
+    {
+        title: "Full Stack Solutions",
+        description: "End-to-end application development with secure backends, databases, and dynamic frontends.",
+        icon: <FiDatabase />
+    }
+];
 
-    const projects = [
-        {
-            title: "Local Coffee Shop Site",
-            category: "Web Design & Dev",
-            description: "A warm, inviting website for a local cafe including an online menu and booking system.",
-            link: "#"
-        },
-        {
-            title: "Real Estate Portfolio",
-            category: "Web Development",
-            description: "Property listing platform with filtering, image galleries, and contact forms for a real estate agent.",
-            link: "#"
-        },
-        {
-            title: "Fitness Coach Landing Page",
-            category: "Landing Page",
-            description: "High-conversion landing page for a personal trainer with integrated payment gateway.",
-            link: "#"
-        }
-    ];
+const projects = [
+    {
+        title: "Press Club Amaravathi",
+        role: "Full Stack Developer",
+        description: "An official website built to showcase news, members and activities of the Amaravathi press community with clean, informative design.",
+        link: "https://pressclub-amaravathi-frontend.vercel.app/",
+        image: "https://res.cloudinary.com/dkdidynja/image/upload/v1770047658/Screenshot_2026-02-02_at_9.24.05_PM_yuh2lz.png"
+    },
+    {
+        title: "Tryyel",
+        role: "Backend Developer",
+        description: "Property listing platform with filtering, image galleries, and contact forms for a real estate agent.",
+        link: "https://tryyel.vercel.app/",
+        image: "https://res.cloudinary.com/dkdidynja/image/upload/v1770048045/Screenshot_2026-02-02_at_9.30.33_PM_t70ajx.png"
+    },
+    // {
+    //     title: "Fitness Coach Landing Page",
+    //     role: "Landing Page",
+    //     description: "High-conversion landing page for a personal trainer with integrated payment gateway.",
+    //     link: "#",
+    //     image: "https://placehold.co/1000x500/1a1a1a/22c55e?text=Fitness+Coach"
+    // }
+];
+
+const Card = ({ i, title, role, description, link, image, progress, range, targetScale }) => {
+    const container = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: container,
+        offset: ['start end', 'start start']
+    });
+
+    const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
+    const scale = useTransform(progress, range, [1, targetScale]);
 
     return (
-        <div name="freelance" className="w-full py-32 bg-background relative overflow-hidden">
+        <div ref={container} className="h-screen flex items-center justify-center sticky top-0">
+            <motion.div
+                style={{ scale, top: `calc(-5vh + ${i * 25}px)` }}
+                className="relative flex flex-col h-[500px] w-full max-w-5xl rounded-3xl bg-neutral-900 border border-white/10 overflow-hidden shadow-2xl origin-top"
+            >
+                {/* Background Image */}
+                {image && (
+                    <div className="absolute inset-0 h-full w-full">
+                        <motion.div style={{ scale: imageScale }} className="h-full w-full">
+                            <img
+                                src={image}
+                                alt={title}
+                                className="object-cover h-full w-full opacity-50 transition-opacity duration-500 hover:opacity-80"
+                            />
+                        </motion.div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+                    </div>
+                )}
 
-            <div className="max-w-6xl mx-auto px-6 w-full relative z-10">
+                {/* Content */}
+                <div className="relative z-10 flex flex-col justify-end h-full p-10 pointer-events-none">
+                    <span className="text-primary font-mono text-sm tracking-wider mb-2">{role}</span>
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">{title}</h2>
+                    <p className="text-lg text-textSecondary max-w-xl mb-6 leading-relaxed">{description}</p>
+
+                    <div className="pointer-events-auto">
+                        <a href={link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-bold text-white border border-white/20 bg-white/5 hover:bg-primary hover:border-primary px-6 py-3 rounded-full transition-all">
+                            View Project <FiExternalLink className="ml-2 text-lg" />
+                        </a>
+                    </div>
+                </div>
+            </motion.div>
+        </div>
+    );
+};
+
+const Freelance = () => {
+    const container = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: container,
+        offset: ['start start', 'end end']
+    });
+
+    return (
+        <div ref={container} name="freelance" className="relative w-full bg-background mb-[20vh]">
+
+            <div className="max-w-6xl mx-auto px-6 w-full pt-32 pb-10">
+                {/* Header */}
                 <div className="mb-20">
                     <div className="flex items-center gap-2 mb-4">
                         <div className="h-px w-8 bg-primary"></div>
@@ -60,8 +117,8 @@ const Freelance = () => {
                     </p>
                 </div>
 
-                {/* Services Grid */}
-                <div className="grid md:grid-cols-3 gap-6 mb-24">
+                {/* Services Grid (Kept from original design) */}
+                <div className="grid md:grid-cols-3 gap-6 mb-32">
                     {services.map((service, index) => (
                         <motion.div
                             key={index}
@@ -78,57 +135,18 @@ const Freelance = () => {
                     ))}
                 </div>
 
-                {/* Freelance Projects Section */}
-                <div className="mb-12">
-                    <div className="flex items-center justify-between mb-8">
-                        <h3 className="text-2xl font-bold text-white">Recent Deliverables</h3>
-                        <div className="h-px flex-grow bg-white/10 ml-6 hidden sm:block"></div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {projects.map((project, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="group relative bg-white/5 rounded-lg overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-300 flex flex-col h-full"
-                            >
-                                <div className="h-48 bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors duration-500 relative overflow-hidden">
-                                    {/* Aesthetic Placeholder Pattern */}
-                                    <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-100 via-gray-900 to-black"></div>
-                                    <span className="text-white/30 font-mono text-xs z-10">[ Project Preview ]</span>
-                                </div>
-                                <div className="p-6 flex flex-col flex-grow">
-                                    <div className="flex justify-between items-start mb-3">
-                                        <h4 className="text-lg font-bold text-white group-hover:text-primary transition-colors">{project.title}</h4>
-                                    </div>
-                                    <span className="text-xs font-mono text-primary/80 mb-3 block">{project.category}</span>
-                                    <p className="text-textSecondary text-sm mb-6 line-clamp-2 flex-grow">
-                                        {project.description}
-                                    </p>
-                                    <a href={project.link} className="inline-flex items-center text-sm font-medium text-white hover:text-primary transition-colors mt-auto group/link">
-                                        View Project <FiExternalLink className="ml-2 text-lg group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                                    </a>
-                                </div>
-                            </motion.div>
-                        ))}
-
-                        {/* Card to add new project (Instructional) */}
-                        <Link to="contact" smooth={true} duration={500} className="h-full">
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                className="border border-dashed border-white/20 rounded-lg p-1 flex flex-col justify-center items-center text-center text-textSecondary hover:border-primary/50 hover:text-primary transition-all cursor-pointer h-full min-h-[100px]"
-                            >
-                                <p className="font-medium text-lg">+ Your Next Project</p>
-                                <p className="text-sm mt-2 opacity-60">Open for new opportunities</p>
-                            </motion.div>
-                        </Link>
-                    </div>
+                <div className="flex items-center justify-between mb-8">
+                    <h3 className="text-2xl font-bold text-white">Recent Deliverables</h3>
+                    <div className="h-px flex-grow bg-white/10 ml-6 hidden sm:block"></div>
                 </div>
+            </div>
 
+            {/* Stack Projects */}
+            <div className="relative">
+                {projects.map((project, i) => {
+                    const targetScale = 1 - ((projects.length - i) * 0.05);
+                    return <Card key={i} i={i} {...project} progress={scrollYProgress} range={[i * 0.25, 1]} targetScale={targetScale} />
+                })}
             </div>
         </div>
     );

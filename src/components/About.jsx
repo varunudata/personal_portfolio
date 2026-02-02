@@ -1,17 +1,13 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-scroll';
 import { FiArrowUpRight, FiCode, FiCpu, FiGlobe } from 'react-icons/fi';
 
 const About = () => {
     return (
         <div name="about" className="w-full py-32 bg-background relative overflow-hidden">
 
-            {/* Subtle Grid Background - Consistent with Contact */}
-
-
             <div className="max-w-6xl mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-
-                    {/* Left Column: Narrative */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -38,14 +34,12 @@ const About = () => {
                         </div>
 
                         <div className="mt-10">
-                            <a href="#" className="inline-flex items-center gap-2 text-white border-b border-primary pb-1 hover:text-primary transition-colors group">
-                                Read more about my journey
+                            <Link to="contact" smooth={true} duration={500} className="inline-flex items-center gap-2 text-white border-b border-primary pb-1 hover:text-primary transition-colors group cursor-pointer">
+                                Get in touch with me
                                 <FiArrowUpRight className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                            </a>
+                            </Link>
                         </div>
                     </motion.div>
-
-                    {/* Right Column: Stats & Highlights */}
                     <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -55,28 +49,26 @@ const About = () => {
                     >
                         <StatCard
                             icon={<FiCode />}
-                            value="3+"
+                            value="2+"
                             label="Years Experience"
-                            description="Building & shipping production code."
+                            description="Building & deploying production code."
                         />
-                        <StatCard
+                        {/* <StatCard
                             icon={<FiGlobe />}
                             value="50+"
                             label="Projects Completed"
                             description="From simple sites to complex apps."
-                        />
+                        /> */}
                         <StatCard
                             icon={<FiCpu />}
                             value="Tech"
                             label="Modern Stack"
-                            description="React, Node, Next.js & more."
+                            description="React, Node, postgresql & more."
                         />
-
-                        {/* Featured 'Approach' Card */}
                         <div className="p-8 bg-primary/10 border border-primary/20 rounded-2xl sm:col-span-2 flex flex-col justify-center">
                             <p className="text-primary font-bold uppercase tracking-wider text-xs mb-2">My Approach</p>
                             <p className="text-white text-xl font-medium">
-                                "Code is poetry. I write clean, maintainable, and efficient solutions that stand the test of time."
+                                "I believe software should be built with empathy. I focus on creating tools that feel natural and intuitive, solving real problems for the people behind the screens."
                             </p>
                         </div>
                     </motion.div>

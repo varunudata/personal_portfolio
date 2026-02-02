@@ -4,13 +4,8 @@ import { FiArrowUpRight, FiMail, FiMapPin, FiGithub, FiLinkedin, FiTwitter } fro
 const Contact = () => {
     return (
         <div name="contact" className="w-full min-h-screen bg-background flex justify-center items-center p-4 py-24 relative overflow-hidden">
-
-            {/* Subtle Grid Background */}
-
-
             <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 relative z-10">
 
-                {/* Left Side: Structured Info */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -40,8 +35,8 @@ const Contact = () => {
                         <InfoCard
                             icon={<FiMail className="text-xl" />}
                             label="Email"
-                            value="hello@varunudata.com"
-                            href="mailto:hello@varunudata.com"
+                            value="varunudatagmail.com"
+                            href="mailto:varunudata@gmail.com"
                         />
                         <InfoCard
                             icon={<FiMapPin className="text-xl" />}
@@ -51,13 +46,12 @@ const Contact = () => {
                     </div>
 
                     <div className="flex gap-4 mt-8 lg:mt-12">
-                        <SocialButton href="https://github.com" icon={<FiGithub />} label="GitHub" />
-                        <SocialButton href="https://linkedin.com" icon={<FiLinkedin />} label="LinkedIn" />
-                        <SocialButton href="https://twitter.com" icon={<FiTwitter />} label="Twitter" />
+                        <SocialButton href="https://github.com/varunudata" icon={<FiGithub />} label="GitHub" />
+                        <SocialButton href="https://www.linkedin.com/in/varunudata/" icon={<FiLinkedin />} label="LinkedIn" />
+                        <SocialButton href="https://x.com/udatavarun" icon={<FiTwitter />} label="Twitter" />
                     </div>
                 </motion.div>
 
-                {/* Right Side: Structured Form */}
                 <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -66,8 +60,8 @@ const Contact = () => {
                 >
                     <form className="bg-[#121212] border border-white/5 p-8 md:p-10 rounded-2xl shadow-2xl space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <FormInput label="Name" placeholder="John Doe" />
-                            <FormInput label="Email" placeholder="john@example.com" type="email" />
+                            <FormInput label="Name" placeholder="Your Name" />
+                            <FormInput label="Email" placeholder="Your Email" type="email" />
                         </div>
 
                         <FormInput label="Subject" placeholder="Project Inquiry" />
@@ -92,8 +86,6 @@ const Contact = () => {
         </div>
     );
 };
-
-// Components
 
 const FormInput = ({ label, type = "text", placeholder }) => (
     <div className="space-y-2">
