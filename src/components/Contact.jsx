@@ -1,7 +1,60 @@
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowUpRight, FiMail, FiMapPin, FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+    const formRef = useRef();
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+    });
+    const [loading, setLoading] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm({ ...form, [name]: value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setLoading(true);
+
+        const templateParams = {
+            from_name: form.name,
+            to_name: "Varun Udata",
+            from_email: form.email,
+            reply_to: form.email,
+            subject: form.subject,
+            message: form.message,
+            name: form.name,
+            email: form.email,
+        };
+
+        emailjs.send(
+            'service_rq3g1qp',
+            'template_035tddv',
+            templateParams,
+            'lfSn-ciD0dvZSar3I'
+        )
+            .then(() => {
+                setLoading(false);
+                alert('Thank you. I will get back to you as soon as possible.');
+                setForm({
+                    name: '',
+                    email: '',
+                    subject: '',
+                    message: '',
+                });
+            }, (error) => {
+                setLoading(false);
+                console.error('EmailJS Error:', error);
+                alert('Failed to send message. Please check the console for details.');
+            });
+    };
+
     return (
         <div name="contact" className="w-full min-h-screen bg-background flex justify-center items-center p-4 py-24 relative overflow-hidden">
             <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 relative z-10">
@@ -58,26 +111,60 @@ const Contact = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                    <form className="bg-[#121212] border border-white/5 p-8 md:p-10 rounded-2xl shadow-2xl space-y-6">
+                    <form
+                        ref={formRef}
+                        onSubmit={handleSubmit}
+                        className="bg-[#121212] border border-white/5 p-8 md:p-10 rounded-2xl shadow-2xl space-y-6"
+                    >
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <FormInput label="Name" placeholder="Your Name" />
-                            <FormInput label="Email" placeholder="Your Email" type="email" />
+                            <FormInput
+                                label="Name"
+                                placeholder="Your Name"
+                                name="name"
+                                value={form.name}
+                                onChange={handleChange}
+                                required
+                            />
+                            <FormInput
+                                label="Email"
+                                placeholder="Your Email"
+                                type="email"
+                                name="email"
+                                value={form.email}
+                                onChange={handleChange}
+                                required
+                            />
                         </div>
 
-                        <FormInput label="Subject" placeholder="Project Inquiry" />
+                        <FormInput
+                            label="Subject"
+                            placeholder="Project Inquiry"
+                            name="subject"
+                            value={form.subject}
+                            onChange={handleChange}
+                            required
+                        />
 
                         <div className="space-y-2">
                             <label className="text-sm font-semibold text-textSecondary uppercase tracking-wider">Message</label>
                             <textarea
                                 rows="5"
+                                name="message"
+                                value={form.message}
+                                onChange={handleChange}
+                                required
                                 className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:bg-white/10 transition-all resize-none placeholder:text-white/20"
                                 placeholder="Tell me more about your project..."
                             />
                         </div>
 
-                        <button className="w-full group bg-white text-black font-bold py-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary hover:text-white transition-all duration-300">
-                            Send Message
-                            <FiArrowUpRight className="text-xl group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className="w-full group bg-white text-black font-bold py-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            {loading ? "Sending..." : "Send Message"}
+                            {!loading && <FiArrowUpRight className="text-xl group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />}
                         </button>
                     </form>
                 </motion.div>
@@ -87,11 +174,15 @@ const Contact = () => {
     );
 };
 
-const FormInput = ({ label, type = "text", placeholder }) => (
+const FormInput = ({ label, type = "text", placeholder, name, value, onChange, required }) => (
     <div className="space-y-2">
         <label className="text-sm font-semibold text-textSecondary uppercase tracking-wider">{label}</label>
         <input
             type={type}
+            name={name}
+            value={value}
+            onChange={onChange}
+            required={required}
             placeholder={placeholder}
             className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:bg-white/10 transition-all placeholder:text-white/20"
         />
@@ -128,4 +219,4 @@ const SocialButton = ({ href, icon, label }) => (
     </a>
 );
 
-export default Contact;
+export default Contact; 

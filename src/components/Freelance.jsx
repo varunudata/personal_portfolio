@@ -61,7 +61,6 @@ const Card = ({ i, title, role, description, link, image, progress, range, targe
                 style={{ scale, top: `calc(-5vh + ${i * 25}px)` }}
                 className="relative flex flex-col h-[500px] w-full max-w-5xl rounded-3xl bg-neutral-900 border border-white/10 overflow-hidden shadow-2xl origin-top"
             >
-                {/* Background Image */}
                 {image && (
                     <div className="absolute inset-0 h-full w-full">
                         <motion.div style={{ scale: imageScale }} className="h-full w-full">
@@ -75,7 +74,6 @@ const Card = ({ i, title, role, description, link, image, progress, range, targe
                     </div>
                 )}
 
-                {/* Content */}
                 <div className="relative z-10 flex flex-col justify-end h-full p-10 pointer-events-none">
                     <span className="text-primary font-mono text-sm tracking-wider mb-2">{role}</span>
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">{title}</h2>
@@ -103,7 +101,6 @@ const Freelance = () => {
         <div ref={container} name="freelance" className="relative w-full bg-background mb-[20vh]">
 
             <div className="max-w-6xl mx-auto px-6 w-full pt-32 pb-10">
-                {/* Header */}
                 <div className="mb-20">
                     <div className="flex items-center gap-2 mb-4">
                         <div className="h-px w-8 bg-primary"></div>
@@ -117,7 +114,6 @@ const Freelance = () => {
                     </p>
                 </div>
 
-                {/* Services Grid (Kept from original design) */}
                 <div className="grid md:grid-cols-3 gap-6 mb-32">
                     {services.map((service, index) => (
                         <motion.div
@@ -141,7 +137,6 @@ const Freelance = () => {
                 </div>
             </div>
 
-            {/* Stack Projects */}
             <div className="relative">
                 {projects.map((project, i) => {
                     const targetScale = 1 - ((projects.length - i) * 0.05);

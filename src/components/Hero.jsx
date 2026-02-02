@@ -2,19 +2,15 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 import { HiArrowRight } from 'react-icons/hi';
 import { FaGithub } from 'react-icons/fa';
+import { FiDownload } from 'react-icons/fi';
 import GradientBackground from './ui/GradientBackground';
+import resume from '../assets/varun_udata_resume.pdf';
 
 const Hero = () => {
     return (
         <div name="hero" className="w-full h-screen flex justify-center items-center relative overflow-hidden bg-[#050505]">
-
-            {/* 1. EMERALD MIST BACKGROUND */}
             <GradientBackground />
-
-            {/* 2. MINIMAL CONTENT */}
             <div className="relative z-20 text-center flex flex-col items-center max-w-5xl mx-auto px-4">
-
-                {/* Subtitle - Professional tag */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -25,8 +21,6 @@ const Hero = () => {
                         Full Stack Developer
                     </span>
                 </motion.div>
-
-                {/* Main Headline */}
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-8 select-none leading-[1.1]">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -44,8 +38,6 @@ const Hero = () => {
                         Digital Solutions.
                     </motion.div>
                 </h1>
-
-                {/* Description */}
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -54,8 +46,6 @@ const Hero = () => {
                 >
                     I transform complex requirements into seamless, high-performance web applications focused on modern architecture and user experience.
                 </motion.p>
-
-                {/* Action Buttons - Pill Shaped */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -67,18 +57,15 @@ const Hero = () => {
                             View My Work <HiArrowRight className="text-xl" />
                         </button>
                     </Link>
-
-                    <a href="https://github.com/varunudata" target="_blank" rel="noopener noreferrer">
+                    <a href={resume} download="Varun_Udata_Resume.pdf">
                         <button className="px-8 py-4 bg-[#1c1917] border border-white/5 text-white font-medium text-lg rounded-full hover:bg-[#292524] transition-all hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer">
-                            Github <FaGithub className="text-xl" />
+                            Download Resume <FiDownload className="text-xl" />
                         </button>
                     </a>
                 </motion.div>
-
             </div>
-
         </div>
     );
 };
 
-export default Hero;
+export default Hero; 

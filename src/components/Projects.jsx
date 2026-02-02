@@ -3,7 +3,6 @@ import { FaGithub } from 'react-icons/fa';
 import { FiArrowUpRight } from 'react-icons/fi';
 
 const Projects = () => {
-    // We'll separate the projects manually to fit the specific Bento Layout
     const project1 = {
         title: "DataPulse",
         description: "A high-performance web application built with React and Node.js for real-time data visualization.",
@@ -45,7 +44,6 @@ const Projects = () => {
             transition={{ duration: 0.4 }}
             className={`group relative ${heightClass} w-full rounded-2xl bg-[#030503] border border-emerald-500/10 overflow-hidden flex flex-col p-8 hover:border-emerald-500/30 transition-colors ${className}`}
         >
-            {/* Background Image */}
             {project.image && (
                 <div className="absolute inset-0 z-0">
                     <img
@@ -58,10 +56,8 @@ const Projects = () => {
                 </div>
             )}
 
-            {/* Hover Glow Effect */}
             <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
 
-            {/* Top Right Links - Always visible */}
             <div className="absolute top-6 right-6 flex gap-4 z-20">
                 <motion.a
                     href={project.links.github}
@@ -92,15 +88,10 @@ const Projects = () => {
                 </motion.a>
             </div>
 
-            {/* Content Pushed to Bottom */}
             <div className="relative z-10 flex flex-col h-full justify-end cursor-pointer">
-                {/* Title - Always visible but moves up on hover */}
-                {/* Added layout to avoid jerky jumps if possible, but CSS is safer here for pure hover */}
                 <h3 className="text-xl font-bold text-emerald-400 mb-2 tracking-tight group-hover:text-emerald-300 transition-colors duration-300 shadow-black drop-shadow-md">
                     {project.title}
                 </h3>
-
-                {/* Hidden Content Container - Using tight max-height for better time mapping */}
                 <div className="max-h-0 group-hover:max-h-[160px] overflow-hidden transition-[max-height] duration-500 group-hover:duration-[800ms] ease-in-out cursor-pointer">
                     <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-700 delay-200 ease-out pb-2">
                         <p className="text-zinc-300 text-sm leading-relaxed mb-4 max-w-sm font-medium">
@@ -136,24 +127,14 @@ const Projects = () => {
                         A selection of things I've built, exploring different technologies and design patterns.
                     </p>
                 </div>
-
-                {/* Bento Grid Layout */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-auto lg:h-[600px]">
-
-                    {/* Left Column: Big Feature Card */}
                     <div className="w-full h-[400px] lg:h-full">
                         <Card project={project1} heightClass="h-full" />
                     </div>
-
-                    {/* Right Column: Stack */}
                     <div className="flex flex-col gap-6 h-full">
-
-                        {/* Top Right: Wide Row */}
                         <div className="h-1/2">
                             <Card project={project2} />
                         </div>
-
-                        {/* Bottom Right: Split Row */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-1/2">
                             <Card project={project3} />
                             <Card project={project4} />
@@ -165,4 +146,4 @@ const Projects = () => {
     );
 };
 
-export default Projects;
+export default Projects; 

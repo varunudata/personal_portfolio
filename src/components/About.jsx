@@ -5,7 +5,6 @@ import { FiArrowUpRight, FiCode, FiCpu, FiGlobe } from 'react-icons/fi';
 const About = () => {
     return (
         <div name="about" className="w-full py-32 bg-background relative overflow-hidden">
-
             <div className="max-w-6xl mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
                     <motion.div
@@ -57,7 +56,7 @@ const About = () => {
                             icon={<FiGlobe />}
                             value="50+"
                             label="Projects Completed"
-                            description="From simple sites to complex apps."
+                            description="From simple sites to complex apps"
                         /> */}
                         <StatCard
                             icon={<FiCpu />}

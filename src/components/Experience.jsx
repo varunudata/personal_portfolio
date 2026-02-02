@@ -65,7 +65,6 @@ const Experience = () => {
                             transition={{ delay: index * 0.2 }}
                             className="relative pl-8 md:pl-12"
                         >
-                            {/* Dot - Animate when in view */}
                             <motion.div
                                 initial={{ scale: 0 }}
                                 whileInView={{ scale: 1 }}
@@ -75,7 +74,6 @@ const Experience = () => {
                             >
                             </motion.div>
 
-                            {/* Card */}
                             <div className="bg-surface/40 backdrop-blur-sm border border-white/5 p-6 rounded-2xl hover:bg-surface/60 transition-colors duration-300 group">
                                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                                     <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors">{exp.role}</h3>

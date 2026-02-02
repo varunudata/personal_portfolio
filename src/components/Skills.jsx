@@ -37,7 +37,6 @@ const Skills = () => {
                     </p>
                 </div>
 
-                {/* Grid Layout for Skills */}
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
                     {skills.map((skill, index) => (
                         <motion.div
@@ -49,18 +48,13 @@ const Skills = () => {
                             transition={{ duration: 0.5, delay: index * 0.05 }}
                             className="relative group bg-surface/50 backdrop-blur-md border border-white/5 rounded-lg p-2 shadow-lg cursor-pointer overflow-hidden flex flex-col items-center justify-center min-h-[80px]" // Increased height slightly to accommodate icon
                         >
-                            {/* Corner Borders - Reveal on Hover */}
                             <span className="absolute top-0 left-0 w-2 h-2 border-l-2 border-t-2 border-emerald-500 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-tl-sm group-hover:top-1 group-hover:left-1" />
                             <span className="absolute top-0 right-0 w-2 h-2 border-r-2 border-t-2 border-emerald-500 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-tr-sm group-hover:top-1 group-hover:right-1" />
                             <span className="absolute bottom-0 left-0 w-2 h-2 border-l-2 border-b-2 border-emerald-500 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-bl-sm group-hover:bottom-1 group-hover:left-1" />
                             <span className="absolute bottom-0 right-0 w-2 h-2 border-r-2 border-b-2 border-emerald-500 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-br-sm group-hover:bottom-1 group-hover:right-1" />
-
-                            {/* Icon (Visible by Default, Hidden on Hover) */}
                             <div className="absolute inset-0 flex items-center justify-center text-3xl group-hover:opacity-0 transition-opacity duration-300">
                                 {skill.icon}
                             </div>
-
-                            {/* Text (Hidden by Default, Visible on Hover) */}
                             <p className="relative z-10 text-zinc-400 text-sm font-medium opacity-0 group-hover:opacity-100 group-hover:text-emerald-400 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                                 {skill.name}
                             </p>

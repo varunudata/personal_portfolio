@@ -17,10 +17,10 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Home', to: 'hero' },
         { name: 'About', to: 'about' },
         { name: 'Skills', to: 'skills' },
         { name: 'Projects', to: 'projects' },
+        { name: 'Services', to: 'freelance' },
         { name: 'Experience', to: 'experience' },
     ];
 
@@ -36,14 +36,12 @@ const Navbar = () => {
             ${scrolled || mobileMenuOpen ? 'bg-[#121212] border border-[#2a2a2a] shadow-2xl w-full max-w-4xl' : 'bg-transparent w-full max-w-6xl'}
           `}
                 >
-                    {/* Logo */}
                     <Link to="hero" smooth={true} duration={500} className="font-bold text-xl cursor-pointer">
                         <span className="text-primary text-2xl">
                             {scrolled ? "VU" : "Varun"}
                         </span>
                     </Link>
 
-                    {/* Desktop Links */}
                     <ul className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
                             <li key={link.name}>
@@ -59,7 +57,6 @@ const Navbar = () => {
                         ))}
                     </ul>
 
-                    {/* CTA & Mobile Toggle */}
                     <div className="flex items-center gap-4">
                         <Link to="contact" smooth={true} duration={500}>
                             <button className="group relative hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface/50 border border-white/10 hover:border-primary/50 transition-all duration-300 overflow-hidden">
